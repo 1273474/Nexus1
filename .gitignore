@@ -1,0 +1,42 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Next.js
+.next/
+out/
+build/
+dist/
+
+# Turborepo
+.turbo
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode
+.idea
+
+# Prisma
+/packages/database/prisma/dev.db
+
+# Personal Notes
+revision_notes.md
+*.log
+
+# Local Database Data
+docker/postgres-data
+
+

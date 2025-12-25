@@ -1,0 +1,22 @@
+{
+    "name": "@repo/database",
+    "version": "0.0.0",
+    "main": "index.ts",
+    "types": "index.ts",
+    "scripts": {
+        "db:generate": "prisma generate",
+        "db:push": "prisma db push",
+        "db:seed": "ts-node seed.ts"
+    },
+    "dependencies": {
+        "@prisma/client": "^5.7.0"
+    },
+    "devDependencies": {
+        "@types/bcryptjs": "^3.0.0",
+        "@types/node": "^20.10.4",
+        "bcryptjs": "^3.0.3",
+        "prisma": "^5.7.0",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.3.3"
+    }
+}

@@ -1,0 +1,69 @@
+// packages/database/prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  MANAGER
+  DRIVER
+}
+
+enum ShipmentStatus {
+  PENDING
+  IN_TRANSIT
+  DELIVERED
+}
+
+model User {
+  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  email        String     @unique
+  name         String?
+  passwordHash String
+  role         Role
+  warehouseId  String?    @db.ObjectId
+  warehouse    Warehouse? @relation(fields: [warehouseId], references: [id])
+  shipments    Shipment[] // Relation for drivers
+  auditLogs    AuditLog[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Warehouse {
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  location  String
+  users     User[]
+  shipments Shipment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Shipment {
+  id          String         @id @default(auto()) @map("_id") @db.ObjectId
+  trackingId  String         @unique
+  status      ShipmentStatus @default(PENDING)
+  driverId    String?        @db.ObjectId
+  driver      User?          @relation(fields: [driverId], references: [id])
+  warehouseId String         @db.ObjectId
+  warehouse   Warehouse      @relation(fields: [warehouseId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model AuditLog {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  action    String
+  userId    String   @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id])
+  timestamp DateTime @default(now())
+}
