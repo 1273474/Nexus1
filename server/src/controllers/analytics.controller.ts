@@ -1,5 +1,5 @@
 import { Response } from 'express';
-import { PrismaClient, ShipmentStatus } from '@repo/database';
+import { PrismaClient, ShipmentStatus } from '@prisma/client';
 import { AuthRequest } from '../middleware/auth.middleware';
 
 const prisma = new PrismaClient();

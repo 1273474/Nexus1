@@ -1,24 +1,36 @@
 # Dependencies
-node_modules
-.pnpm-store
+node_modules/
+.pnp
+.pnp.js
 
-# Environment variables
-.env
-.env.*
-!.env.example
+# Testing
+coverage/
 
 # Next.js
 .next/
 out/
 build/
+
+# Server
 dist/
+
+# Misc
+.DS_Store
+*.pem
+.env*
+!.env.example
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
 
 # Turborepo
 .turbo
 
 # Logs
 npm-debug.log*
-yarn-debug.log*
 yarn-error.log*
 
 # OS
