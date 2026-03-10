@@ -1,8 +1,6 @@
 # Nexus: Intelligent Logistics Management System
 
-Nexus is a modern, real-time logistics and analytics platform designed to streamline warehouse operations, track shipments, and provide actionable insights. Built with a robust MERN stack (MongoDB, Express, React, Node) architecture within a Turborepo monorepo.
-
-![Dashboard Preview](https://via.placeholder.com/1200x600?text=Nexus+Dashboard+Preview)
+Nexus is a modern, real-time logistics and analytics platform designed to streamline warehouse operations, track shipments, and provide actionable insights. Built with a robust MERN stack (MongoDB, Express, React, Node).
 
 ## 🚀 Features
 
@@ -14,72 +12,66 @@ Nexus is a modern, real-time logistics and analytics platform designed to stream
 
 ## 🛠️ Tech Stack
 
-### Core
-*   **Monorepo**: Turborepo, NPM Workspaces
-*   **Languages**: TypeScript (Frontend & Backend)
-
-### Frontend (`apps/web`)
-*   **Framework**: Next.js 14
-*   **UI Library**: Radix UI, Tailwind CSS
-*   **State & Data**: React Query, Axios
+### Frontend (`client/`)
+*   **Framework**: Next.js 14 (React)
+*   **UI Library**: Tailwind CSS, lucide-react
+*   **State & Data**: Zustand, Axios
 *   **Real-time**: Socket.io-client
 
-### Backend (`apps/server`)
-*   **Server**: Node.js, Express
+### Backend (`server/`)
+*   **Server**: Node.js, Express.js
 *   **Database**: MongoDB Atlas
 *   **ORM**: Prisma
 *   **Real-time**: Socket.io
-*   **Auth**: JWT, Bcrypt
+*   **Auth**: JWT, bcryptjs
 
 ## 📦 Project Structure
 
 ```bash
 .
-├── apps
-│   ├── web/          # Next.js Frontend Application
-│   └── server/       # Express.js Backend API
-└── packages
-    ├── database/     # Prisma Schema & Shared Types
-    └── ...           # Other shared configs
+├── client/           # Next.js Frontend Application
+└── server/           # Express.js Backend API & Prisma Database
 ```
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 *   Node.js (v18+)
-*   npm (v9+)
 *   MongoDB Atlas Connection String
 
 ### Installation
 
 1.  **Clone the repository**
     ```bash
-    git clone https://github.com/yourusername/nexus.git
-    cd nexus
+    git clone https://github.com/1273474/Nexus1.git
+    cd Nexus1
     ```
 
-2.  **Install dependencies**
+2.  **Setup Backend (Server)**
     ```bash
+    cd server
     npm install
     ```
-
-3.  **Setup Environment Variables**
-    Create a `.env` file in the root directory:
+    Create a `.env` file in the `server` directory:
     ```env
     DATABASE_URL="mongodb+srv://..."
     JWT_SECRET="your_secret_key"
     ```
-
-4.  **Initialize Database**
+    Generate Prisma Client and Push Schema:
     ```bash
     npx prisma generate
     npx prisma db push
-    # Optional: Seed data
-    # npx ts-node packages/database/seed.ts
+    ```
+    Run the server:
+    ```bash
+    npm run dev
     ```
 
-5.  **Run Development Server**
+3.  **Setup Frontend (Client)**
+    Open a new terminal window:
     ```bash
+    cd client
+    npm install
     npm run dev
     ```
 
