@@ -6,6 +6,15 @@
         "forceConsistentCasingInFileNames": true,
         "strict": true,
         "skipLibCheck": true,
-        "outDir": "./dist"
-    }
+        "outDir": "./dist",
+        "rootDir": "./src"
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "prisma",
+        "**/*.test.ts"
+    ]
 }
